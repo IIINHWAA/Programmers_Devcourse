@@ -9,4 +9,5 @@
 
  ### 🌼 Week 2
  - [로그인](https://github.com/IIINHWAA/Programmers_Devcourse/blob/main/Week2/Login/README.md) <br>
+ - [메뉴 선택 - HTML/CSS/JS실습](https://github.com/IIINHWAA/Programmers_Devcourse/tree/main/Week2/Simple_Market) <br>
  - [Node.js를 이용한 서버 생성](https://github.com/IIINHWAA/Programmers_Devcourse/blob/main/Week2/Server/README.md)<br>
