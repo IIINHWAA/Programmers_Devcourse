@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Market</title>
+    <link rel="stylesheet" href="main.css"> 
+</head>
+<script type ="text/javascript" src="orderlist.js">
+
+</script>
+
+<body>
+    <div id="menu">
+        <h1>♥MENU♥</h1>
+        <h3>Please select a menu</h3>
+        <a href="./orderlist.html">Order List</a>
+    </div>
+
+    <div id="set">
+        <div class="menu_div">
+            <img class="menu_img" src="./img/pizza.jpg">
+            <p class="menu_title">Pizza</p>
+            <input class="menu_button" type="button" value="Order" onclick="order(1)">
+        </div>
+
+        <div class="menu_div">
+            <img class="menu_img" src="./img/치킨.png">
+            <p class="menu_title">Chicken</p>
+            <input class="menu_button" type="button" value="Order" onclick="order(2)">
+        </div>
+
+        <div class="menu_div">
+            <img class="menu_img" src="./img/햄버거.jpg">
+            <p class="menu_title">Hamburger</p>
+            <input class="menu_button" type="button" value="Order" onclick="order(3)">
+        </div>
+    </div>
+</body>
+</html>
