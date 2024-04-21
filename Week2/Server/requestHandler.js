@@ -1,5 +1,12 @@
+const mariadb = require('./database/connect/mariadb');
+
+
 function main(response){ //response가 '/'인 경우의 처리 함수
     console.log('main');
+
+    mariadb.query("SELECT * FROM product", function(err, rows){
+        console.log(rows);
+    });
 
     response.writeHead(200,{'Content-Type' : 'text/html'});
     response.write('Main page');
