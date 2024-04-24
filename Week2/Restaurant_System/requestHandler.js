@@ -60,7 +60,7 @@ function order(response, name, p_num, menu){
     });*/
 
     
-    mariadb.query("INSERT INTO orderlist VALUES('"+name+"','"+p_num+"','"+p_num+"','"+menu+"');" , function(err, rows){
+    mariadb.query("INSERT INTO orderlist VALUES('"+name+"','"+p_num+"','"+date+"','"+menu+"');" , function(err, rows){
         console.log(rows);
     });
 
