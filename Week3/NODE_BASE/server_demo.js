@@ -8,3 +8,4 @@ function onRequest(request, response){
 }
 
 http.createServer(onRequest).listen(8880); //서버 생성
+//http 모듈에 createServer 함수에서 일을 한 뒤 onRequest 콜백함수를 실행
