@@ -83,3 +83,42 @@ app.delete('/youtubers/:id', function(req,res){
     }   
 })
 
+//REST API 설계 : 전체 채널 삭제
+app.delete('/youtubers', function(req,res){
+    if (youtube_db.size>=1){
+        youtube_db.clear()
+        res.json({
+            message : "전체 채널이 삭제되었습니다."
+        })
+    }
+    else{
+        res.json({
+            message : "삭제할 데이터가 없습니다."
+        })
+    }
+
+})
+
+//REST API 설계 : 채널명 수정
+app.put('/youtubers/:id', function(req,res){
+    let {id} = req.params
+    id = parseInt(id)
+    let youtuber = youtube_db.get(id)
+    
+    let before_name = youtube_db.get(id).channelTitle;
+
+    if (youtuber == undefined){
+        res.json({
+            message : "없는 유튜버입니다."
+        })
+    }
+    else{
+        let new_name = req.body.channelTitle
+        youtuber.channelTitle = new_name
+        youtube_db.set(id,youtuber)
+        let after_name = req.body.channelTitle
+        res.json({
+            message : before_name+"님 "+after_name+"으로 변경되었습니다."
+        })
+    }
+})
