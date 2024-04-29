@@ -24,4 +24,6 @@
 <br>
 
 **5) 유튜버 전체 삭제**
-⇒
+⇒ DELETE/youtubers <br>
+-req : X <br>
+-res : “모든 채널이 삭제되었습니다.” <br>
