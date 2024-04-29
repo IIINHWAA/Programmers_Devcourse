@@ -27,3 +27,8 @@
 ⇒ DELETE/youtubers <br>
 -req : X <br>
 -res : “모든 채널이 삭제되었습니다.” <br>
+<br>
+**6) 개별 유튜버 수정**
+⇒ PUT/youtubers/:id<br>
+-req : [params.id](http://params.id), body ← channelTitle<br>
+-res : “(이전)channelTitle님, 채널명이 channelTitle로 변경되었습니다.”
