@@ -40,11 +40,16 @@ app.get('/youtubers/:id', function(req, res){
 })
 
 
-//REST API 설계 : 유튜버 전체 출력
+//REST API 설계 : 유튜버 전체 조회
 app.get('/youtubers', function(req,res){
     let jsonObj = {};
-    youtube_db.forEach((value, key)=>{jsonObj[key] = value})
-    res.json(jsonObj)
+    if (youtube_db){
+        youtube_db.forEach((value, key)=>{jsonObj[key] = value})
+        res.json(jsonObj)
+    }
+    else{
+        res.status(404).send("유튜버가 존재하지 않습니다.")
+    }
 })
 
 
