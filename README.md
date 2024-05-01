@@ -20,4 +20,4 @@
  
  ### 🌼 Week 4
  - [youtuber_demo(추가/조회/삭제) 실습](https://github.com/IIINHWAA/Programmers_Devcourse/tree/main/Week4) <br>
- - [Member API](https://github.com/IIINHWAA/Programmers_Devcourse/blob/main/Member_API/README) <br>
+ - [Member API](https://github.com/IIINHWAA/Programmers_Devcourse/blob/main/Member_API/README.md) <br>
