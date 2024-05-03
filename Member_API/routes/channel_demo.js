@@ -1,45 +1,52 @@
 const express = require('express')
-const app = express()
-app.listen(1123)
-app.use(express.json())
+const router = express.Router()
+router.use(express.json()) 
 
 let db = new Map()
 var id = 1
 
 
-app
+router
     .route('/channels')
     .get((req, res)=>{//채널 전체 조회
+        var {userId} = req.body
         var channels = []
-        if (db.size){
-            db.forEach(function(value, key){
-                channels.push(value)
+
+        if(db.size && userId){
+            db.forEach(function(value,key){
+                if (value.userId === userId){
+                    channels.push(value)
+                }
+
             })
-            res.json(channels)
+            if (channels.length){
+                res.status(200).json(channels)
+            }
+            else{
+                notFoundChannel()
+            }
         }
         else{
-            res.status(404).json({
-                message : "조회할 채널이 없습니다"
-            })
+            notFoundChannel()
         }
-        
     }) 
     .post((req, res)=>{//채널 개별 생성
         if (req.body.channelTitle){
-            db.set(id++, req.body)
+            let channel = req.body
+            db.set(id++, channel)
 
             res.status(201).json({
-            message : `${db.get(id-1).channelTitle} 채널을 응원합니다`
+                message:`${db.get(id-1).channelTitle} 채널을 응원합니다`
             })
         }
         else{
             res.status(400).json({
-                message : "값이 옳지 않습니다."
+                message : "요청 값을 제대로 보내주세요"
             })
         }
     }) 
 
-app
+router
     .route('/channels/:id')
     .get((req, res)=>{//채널 개별 조회
         let {id} = req.params
@@ -51,9 +58,7 @@ app
             res.status(200).json(channel)
         }
         else{
-            res.status(404).json({
-                message : "채널 정보를 찾을 수 없음"
-            })
+            notFoundChannel()
         }
     }) 
     .put((req, res)=>{//채널 개별 수정
@@ -71,9 +76,7 @@ app
             })
         }
         else{
-            res.status(404).json({
-                message : "채널 정보를 찾을 수 없습니다."
-            })
+            notFoundChannel()
         }
 
     }) 
@@ -82,7 +85,7 @@ app
         id = parseInt(id)
 
         var channel = db.get(id)
-        name = channel.channelTitle
+        let name = channel.channelTitle
         if (channel){
             db.delete(id)
             res.status(200).json({
@@ -90,8 +93,13 @@ app
             })
         }
         else{
-            res.status(404).json({
-                message : "채널 정보를 찾을 수 없음"
-            })
+            notFoundChannel()
         }
     }) 
+
+    function notFoundChannel(){
+        res.status(404).json({
+            message : "채널 정보를 찾을 수 없음"
+        })
+    }
+    module.exports = router
