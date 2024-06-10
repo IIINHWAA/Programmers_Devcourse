@@ -45,7 +45,7 @@ validate],
                 });
 
                 //res.cookie()
-                res.cookie("tokern", token, {
+                res.cookie("token", token, {
                     httpOnly : true
                 });
                 

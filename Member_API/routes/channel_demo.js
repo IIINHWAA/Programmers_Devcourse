@@ -62,7 +62,7 @@ router
     [param('id').notEmpty().withMessage('채널 아이디 필요'),validate]
     ,(req, res)=>{//채널 개별 조회
         let {id} = req.params
-        id - parseInt(id)
+        id = parseInt(id)
         conn.query(
             'SELECT * FROM `channels` WHERE id = ?', id,
             function (err, results, fields){
